@@ -38,6 +38,7 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 
@@ -60,6 +61,7 @@
 		<module>web</module>
 		<module>ear</module>
 		<module>mt-dto</module>
+		<module>login-module</module>
 	</modules>
 
 </project>

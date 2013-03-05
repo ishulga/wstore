@@ -15,6 +15,7 @@
 	</properties>
 
 	<dependencies>
+	
 		<dependency>
 			<groupId>javax.enterprise</groupId>
 			<artifactId>cdi-api</artifactId>
@@ -44,11 +45,6 @@
 			<scope>provided</scope>
 		</dependency>
 		
-		<dependency>
-         <groupId>javax.cache</groupId>
-         <artifactId>cache-api</artifactId>
-         <version>${version.javax.cache.api}</version>
-      </dependency>
 
 		<!-- Infinispan dependency -->
 		<dependency>
@@ -62,6 +58,7 @@
 			<groupId>com.shulga</groupId>
 			<artifactId>jboss-app-dto</artifactId>
 			<version>0.0.1</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>

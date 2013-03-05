@@ -10,9 +10,6 @@
     <module>
         <ejb>jboss-app-ejb.jar</ejb>
     </module>
-    <module>
-        <ejb>jboss-app-dto-0.0.1.jar</ejb>
-    </module>
 
     <module>
         <web>
@@ -20,5 +17,5 @@
             <context-root>jboss-app</context-root>
         </web>
     </module>
-
+	<library-directory>lib</library-directory>
 </application>

@@ -9,7 +9,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.shulga.ejb.interfaces.DeveloperEJBRemote;
+import com.shulga.ejb.interfaces.DeveloperServiceRemote;
 import com.shulga.model.Developer;
 
 @Named("developerBean")
@@ -18,7 +18,7 @@ public class DeveloperBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private DeveloperEJBRemote developerEJB;
+	private DeveloperServiceRemote developerEJB;
 	private List<Developer> devList;
 
 	public void addDeveloper(String name, String lastname) {

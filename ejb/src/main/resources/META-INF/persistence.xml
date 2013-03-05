@@ -6,8 +6,10 @@
         http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
     <persistence-unit name="primary">
          <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <jta-data-source>java:jboss/datasources/GreeterQuickstartDS</jta-data-source>
+        <jta-data-source>shulga/wstoreDS</jta-data-source>
         <class>com.shulga.model.Developer</class>
+        <class>com.shulga.model.User</class>
+        <class>com.shulga.model.Entry</class>
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="create-drop" />
             <property name="hibernate.show_sql" value="false" />

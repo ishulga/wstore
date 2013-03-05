@@ -16,8 +16,8 @@ import org.jboss.shrinkwrap.resolver.api.maven.MavenDependencyResolver;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.shulga.common.CustomException;
-import com.shulga.ejb.interfaces.DeveloperEJBRemote;
+import com.shulga.common.ValidationException;
+import com.shulga.ejb.interfaces.DeveloperServiceRemote;
 import com.shulga.model.Developer;
 
 @RunWith(Arquillian.class)
@@ -32,10 +32,10 @@ public class DeveloperServiceTest {
     }
 
 	@Inject
-	private DeveloperEJBRemote devService;
+	private DeveloperServiceRemote devService;
 
 	@Test
-	public void testDeveloperCRUD() throws CustomException {
+	public void createUpdate() throws ValidationException {
 		Developer dev = new Developer();
 		dev.setName("Jack");
 		Long id = devService.create(dev);
@@ -48,17 +48,16 @@ public class DeveloperServiceTest {
 	}
 
 	@Test
-	public void testGetByQBE() throws CustomException {
+	public void getByQBE() throws ValidationException {
 		Developer dev = new Developer();
 		dev.setName("Jack");
 		dev.setLastname("Welch");
 		devService.create(dev);
 		dev = new Developer();
 		dev.setName("Jack");
-
 		dev = devService.getList(dev).get(0);
 		assertEquals("Jack", dev.getName());
 		assertEquals("Welch", dev.getLastname());
 	}
-
+	
 }
