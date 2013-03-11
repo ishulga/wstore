@@ -36,9 +36,10 @@ public class Notifier {
 			message.setStringProperty("name", text);
 			producer.send(dest, message);
 			producer.close();
-//			logger.info("Jms message sent");
+//			logger.info("Jms message sent");sss
 		} catch (JMSException e) {
 			e.printStackTrace();
+//			logger.info("Jms message exception");
 		}finally{
 			if(connection!=null)
 				try {
