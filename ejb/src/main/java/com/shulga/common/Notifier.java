@@ -36,7 +36,7 @@ public class Notifier {
 			message.setStringProperty("name", text);
 			producer.send(dest, message);
 			producer.close();
-//			logger.info("Jms message sent");sss
+//			logger.info("Jms message sent");
 		} catch (JMSException e) {
 			e.printStackTrace();
 //			logger.info("Jms message exception");
