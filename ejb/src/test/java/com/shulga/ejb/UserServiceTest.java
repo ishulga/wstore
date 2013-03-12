@@ -2,6 +2,9 @@ package com.shulga.ejb;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Arrays;
+import java.util.HashSet;
+
 import javax.inject.Inject;
 
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -10,12 +13,15 @@ import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.shulga.common.ValidationException;
 import com.shulga.ejb.interfaces.UserServiceRemote;
+import com.shulga.model.Entry;
 import com.shulga.model.User;
+
 
 @RunWith(Arquillian.class)
 public class UserServiceTest {
@@ -55,6 +61,22 @@ public class UserServiceTest {
 		user = userService.getList(user).get(0);
 		assertEquals("Jack", user.getName());
 		assertEquals("Welch", user.getLastname());
+	}
+	
+	@Test
+	@Ignore
+    public void userWithEntries() throws ValidationException {
+        User user = new User();
+        user.setName("Jack");
+        user.setLastname("Welch");
+        Entry entry = new Entry();
+        entry.setTitle("title");
+        user.setEntries(new HashSet<Entry>(Arrays.asList(entry)));
+        Long id = userService.create(user);
+        user = userService.get(id);
+        assertEquals("Jack", user.getName());
+        assertEquals("title", user.getEntries().iterator().next().getTitle());
+	
 	}
 	
 }

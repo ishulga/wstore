@@ -7,7 +7,7 @@
 	<defaultProtocol type="Servlet 3.0" />
 	<container qualifier="jboss" default="true">
 		<configuration>
-			<property name="jbossHome">D:\Servers\jboss-as-7.1.1.Final</property>
+			<property name="jbossHome">D:\Servers\jboss-eap-6.0.0_copy\jboss-eap-6.0</property>
 		</configuration>
 	</container>
 </arquillian>

@@ -19,6 +19,8 @@ import org.junit.runner.RunWith;
 import com.shulga.common.ValidationException;
 import com.shulga.ejb.interfaces.DeveloperServiceRemote;
 import com.shulga.model.Developer;
+import com.shulga.persistance.DeveloperPL;
+import com.shulga.persistance.GenericPL;
 
 @RunWith(Arquillian.class)
 public class DeveloperServiceTest {

@@ -15,8 +15,6 @@ public class Entry implements Serializable {
 	private Long id;
 	private String title;
 	private String text;
-	@OneToOne
-	private User author;
 
 	public Long getId() {
 		return id;
@@ -40,14 +38,6 @@ public class Entry implements Serializable {
 
 	public void setText(String text) {
 		this.text = text;
-	}
-
-	public User getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(User author) {
-		this.author = author;
 	}
 
 }

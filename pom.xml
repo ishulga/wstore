@@ -61,7 +61,6 @@
 		<module>web</module>
 		<module>ear</module>
 		<module>mt-dto</module>
-		<module>login-module</module>
 	</modules>
 
 </project>
