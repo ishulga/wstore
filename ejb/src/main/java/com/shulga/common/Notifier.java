@@ -12,6 +12,8 @@ import javax.jms.Message;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
 
+import com.shulga.annotation.WstLogger;
+
 
 
 public class Notifier {
@@ -20,8 +22,9 @@ public class Notifier {
 	private ConnectionFactory factory;
 	@Resource(mappedName="shulga/jms/queue/demo_queue")
 	private Destination dest;
-//	@Inject
-//	private Logger logger;
+	@Inject
+	@WstLogger
+	private Logger logger;
 	private Connection connection;
 
 	
@@ -35,17 +38,16 @@ public class Notifier {
 			Message message = session.createTextMessage();
 			message.setStringProperty("name", text);
 			producer.send(dest, message);
+			logger.info( "JMS message sent");
 			producer.close();
-//			logger.info("Jms message sent");
 		} catch (JMSException e) {
 			e.printStackTrace();
-//			logger.info("Jms message exception");
 		}finally{
 			if(connection!=null)
 				try {
 					connection.close();
 				} catch (JMSException e) {
-//					logger.info( "Conection closing error");
+					logger.info( "Could not close connection");
 				}
 		}
 	}
