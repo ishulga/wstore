@@ -8,6 +8,9 @@
          <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <jta-data-source>shulga/wstoreDS</jta-data-source>
         <class>com.shulga.model.Developer</class>
+        <class>com.shulga.model.User</class>
+        <class>com.shulga.model.Comment</class>
+        <class>com.shulga.model.Item</class>
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="create-drop" />
             <property name="hibernate.show_sql" value="false" />

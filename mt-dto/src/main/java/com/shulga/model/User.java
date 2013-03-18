@@ -4,13 +4,17 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class User implements Serializable, HasId {
@@ -23,16 +27,23 @@ public class User implements Serializable, HasId {
     private String login;
     private String password;
     private String description;
-    @ManyToMany
-    @JoinTable(name = "USER_TO_ROLE", joinColumns = @JoinColumn(name = "USER_ID"), inverseJoinColumns = @JoinColumn(name = "ROLE_ID"))
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn
-    private Set<Role> roles = new HashSet<Role>();
-    @OneToMany
+    private Set<Item> boughtItems = new HashSet<Item>();
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn
-    private Set<Entry> entries;
-    @OneToMany
-    @JoinColumn
-    private Set<Item> items;
+    private Set<Item> sellItems = new HashSet<Item>();
+
+    @Transient
+    private Credentials credentials;
+
+    public Credentials getCredentials() {
+        return credentials;
+    }
+
+    public void setCredentials(Credentials credentials) {
+        this.credentials = credentials;
+    }
 
     public String getDescription() {
         return description;
@@ -42,28 +53,20 @@ public class User implements Serializable, HasId {
         this.description = description;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Set<Item> getBoughtItems() {
+        return boughtItems;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setBoughtItems(Set<Item> boughtItems) {
+        this.boughtItems = boughtItems;
     }
 
-    public Set<Item> getItems() {
-        return items;
+    public Set<Item> getSellItems() {
+        return sellItems;
     }
 
-    public void setItems(Set<Item> items) {
-        this.items = items;
-    }
-
-    public Set<Entry> getEntries() {
-        return entries;
-    }
-
-    public void setEntries(Set<Entry> entries) {
-        this.entries = entries;
+    public void setSellItems(Set<Item> sellItems) {
+        this.sellItems = sellItems;
     }
 
     public Long getId() {

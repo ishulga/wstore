@@ -16,7 +16,7 @@ import org.jboss.shrinkwrap.resolver.api.maven.MavenDependencyResolver;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import com.shulga.common.ValidationException;
+import com.shulga.common.ServiceValidationException;
 import com.shulga.ejb.interfaces.DeveloperServiceRemote;
 import com.shulga.model.Developer;
 import com.shulga.persistance.DeveloperPL;
@@ -37,7 +37,7 @@ public class DeveloperServiceTest {
 	private DeveloperServiceRemote devService;
 
 	@Test
-	public void createUpdate() throws ValidationException {
+	public void createUpdate() throws ServiceValidationException {
 		Developer dev = new Developer();
 		dev.setName("Jack");
 		Long id = devService.create(dev);
@@ -50,7 +50,7 @@ public class DeveloperServiceTest {
 	}
 
 	@Test
-	public void getByQBE() throws ValidationException {
+	public void getByQBE() throws ServiceValidationException {
 		Developer dev = new Developer();
 		dev.setName("Jack");
 		dev.setLastname("Welch");

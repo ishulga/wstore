@@ -8,4 +8,8 @@ public class UserPL extends GenericPL<User> {
 		super(User.class);
 	}
 	
+	public User getByLogin(String login){
+	    return (User) em.createQuery("select u from User u where u.login =:login").setParameter("login", login).getSingleResult();
+	}
+	
 }

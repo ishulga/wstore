@@ -1,10 +1,10 @@
 package com.shulga.common;
 
-public class ValidationException extends Exception {
+public class ServiceValidationException extends Exception {
 	
 	private static final long serialVersionUID = 1L;
 
-	public ValidationException(String message){
+	public ServiceValidationException(String message){
 		super(message);
 	}
 

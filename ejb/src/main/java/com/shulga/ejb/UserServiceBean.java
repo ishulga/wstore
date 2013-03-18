@@ -5,7 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
-import com.shulga.common.ValidationException;
+import com.shulga.common.ServiceValidationException;
 import com.shulga.ejb.interfaces.UserServiceRemote;
 import com.shulga.model.User;
 import com.shulga.persistance.UserPL;
@@ -16,7 +16,7 @@ public class UserServiceBean implements UserServiceRemote {
 	private UserPL userPL;
 
 	@Override
-	public Long create(User user) throws ValidationException {
+	public Long create(User user) throws ServiceValidationException {
 		return userPL.create(user);
 	}
 
@@ -37,7 +37,11 @@ public class UserServiceBean implements UserServiceRemote {
 
 	@Override
 	public List<User> getList(User qbe) {
-		return userPL.getListByQBE(qbe);
+		return userPL.get(qbe);
+	}
+	@Override
+	public User getByLogin(String login) {
+	    return userPL.getByLogin(login);
 	}
 
 }

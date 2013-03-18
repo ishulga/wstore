@@ -42,7 +42,7 @@ public class GenericPL<T extends Serializable & HasId> {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<T> getListByQBE(T qbe)
+	public List<T> get(T qbe)
     {
         return getCriteria(qbe).list();
     }

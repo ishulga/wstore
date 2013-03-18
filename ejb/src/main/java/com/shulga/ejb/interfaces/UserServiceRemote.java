@@ -4,13 +4,13 @@ import java.util.List;
 
 import javax.ejb.Local;
 
-import com.shulga.common.ValidationException;
+import com.shulga.common.ServiceValidationException;
 import com.shulga.model.User;
 
 @Local
 public interface UserServiceRemote {
 	
-	Long create(User user) throws ValidationException;
+	Long create(User user) throws ServiceValidationException;
 
     void update(User user);
 
@@ -19,4 +19,6 @@ public interface UserServiceRemote {
     User get(Long id);
 
 	List<User> getList(User qbe);
+
+    User getByLogin(String login);
 }

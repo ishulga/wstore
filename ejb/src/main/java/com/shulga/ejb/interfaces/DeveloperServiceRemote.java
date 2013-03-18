@@ -4,13 +4,13 @@ import java.util.List;
 
 import javax.ejb.Local;
 
-import com.shulga.common.ValidationException;
+import com.shulga.common.ServiceValidationException;
 import com.shulga.model.Developer;
 
 @Local
 public interface DeveloperServiceRemote {
 	
-	Long create(Developer dev) throws ValidationException;
+	Long create(Developer dev) throws ServiceValidationException;
 
     void update(Developer dev);
 

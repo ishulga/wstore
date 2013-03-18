@@ -8,7 +8,7 @@ import javax.inject.Inject;
 
 import com.shulga.annotation.WstLogger;
 import com.shulga.common.Notifier;
-import com.shulga.common.ValidationException;
+import com.shulga.common.ServiceValidationException;
 import com.shulga.ejb.interfaces.DeveloperServiceRemote;
 import com.shulga.model.Developer;
 import com.shulga.persistance.DeveloperPL;
@@ -24,9 +24,9 @@ public class DeveloperServiceBean implements DeveloperServiceRemote {
 	private Logger logger;
 
 	@Override
-	public Long create(Developer dev) throws ValidationException {
+	public Long create(Developer dev) throws ServiceValidationException {
 		if (!getList(dev).isEmpty()) {
-			throw new ValidationException("The name already exists");
+			throw new ServiceValidationException("The name already exists");
 		}
 		notifier.sendMessage("Hello");
 		Long id = devPL.create(dev);
@@ -51,7 +51,7 @@ public class DeveloperServiceBean implements DeveloperServiceRemote {
 
 	@Override
 	public List<Developer> getList(Developer qbe) {
-		List<Developer> devs = devPL.getListByQBE(qbe);
+		List<Developer> devs = devPL.get(qbe);
 		return devs;
 	}
 
