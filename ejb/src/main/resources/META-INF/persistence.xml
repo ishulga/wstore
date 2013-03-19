@@ -7,7 +7,6 @@
     <persistence-unit name="primary">
          <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <jta-data-source>shulga/wstoreDS</jta-data-source>
-        <class>com.shulga.model.Developer</class>
         <class>com.shulga.model.User</class>
         <class>com.shulga.model.Comment</class>
         <class>com.shulga.model.Item</class>

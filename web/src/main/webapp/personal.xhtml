@@ -1,8 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
@@ -10,8 +8,30 @@
 </head>
 
 <body>
+    <h:link outcome="/products.xhtml" value="View all items" />
+    <h:link outcome="/productCreate.xhtml" value="Create Item" />
 
-	Success
+    <h:dataTable value="#{userBean.sellItems}" var="sellItem">
+        <h:column>
+            <f:facet name="header">Title</f:facet>
+                    #{sellItem.title}
+                </h:column>
+        <h:column>
+            <f:facet name="header">Text</f:facet>
+                    #{sellItem.text}
+                </h:column>
+    </h:dataTable>
+    
+    <h:dataTable value="#{userBean.boughtItems}" var="boughtItem">
+        <h:column>
+            <f:facet name="header">Title</f:facet>
+                    #{boughtItem.title}
+                </h:column>
+        <h:column>
+            <f:facet name="header">Text</f:facet>
+                    #{boughtItem.text}
+                </h:column>
+    </h:dataTable>
 
 </body>
 </html>

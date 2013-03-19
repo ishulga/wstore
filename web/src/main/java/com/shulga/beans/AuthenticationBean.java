@@ -32,7 +32,7 @@ public class AuthenticationBean implements Serializable {
     private String passwordConfirm;
     private String locale;
 
-    public void login() {
+    public String login() {
         if (StringUtils.isEmpty(login)) {
             ApplicationUtils.addMessage("Empty username");
         }
@@ -47,12 +47,12 @@ public class AuthenticationBean implements Serializable {
         } catch (ServiceValidationException e) {
             ApplicationUtils.addMessage(e.getMessage());
         }
-        ApplicationUtils.addMessage("Success login");
+        return View.PERSONAL.page();
     }
 
-    public void register() {
+    public String register() {
         if (!validateRegistration()) {
-            return;
+            return null;
         }
         creds = new Credentials();
         creds.setLogin(login);
@@ -62,7 +62,7 @@ public class AuthenticationBean implements Serializable {
         } catch (ServiceValidationException e) {
             ApplicationUtils.addMessage(e.getMessage());
         }
-        ApplicationUtils.addMessage("Success registration");
+        return View.PERSONAL.page();
     }
 
     private boolean validateRegistration() {
