@@ -5,15 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.commons.lang.StringUtils;
+import org.jboss.logging.Message;
+import org.jboss.logging.Messages;
 
 import com.shulga.common.ServiceValidationException;
 import com.shulga.ejb.interfaces.AuthenticationServiceRemote;
 import com.shulga.model.Credentials;
 import com.shulga.utils.ApplicationUtils;
+import com.shulga.utils.WStoreMessages;
 
 /**
  * CDI beans is used for JSF implementation
@@ -31,13 +35,16 @@ public class AuthenticationBean implements Serializable {
     private String password;
     private String passwordConfirm;
     private String locale;
+    
 
     public String login() {
         if (StringUtils.isEmpty(login)) {
-            ApplicationUtils.addMessage("Empty username");
+            ApplicationUtils.addMessage(WStoreMessages.MESSAGES.emptyLogin());
+            return null;
         }
         if (StringUtils.isEmpty(password)) {
-            ApplicationUtils.addMessage("Empty password");
+            ApplicationUtils.addMessage(WStoreMessages.MESSAGES.emptyPassword());
+            return null;
         }
         creds = new Credentials();
         creds.setLogin(login);
@@ -68,16 +75,16 @@ public class AuthenticationBean implements Serializable {
     private boolean validateRegistration() {
         List<String> errorList = new ArrayList<String>();
         if (StringUtils.isEmpty(login)) {
-            errorList.add("Empty username");
+            errorList.add(WStoreMessages.MESSAGES.emptyLogin());
         }
         if (StringUtils.isEmpty(password)) {
-            errorList.add("Empty password");
+            errorList.add(WStoreMessages.MESSAGES.emptyPassword());
         }
         if (StringUtils.isEmpty(passwordConfirm)) {
-            errorList.add("Empty passwordConfirm");
+            errorList.add(WStoreMessages.MESSAGES.emptyPassConfirm());
         }
         if (!password.equals(passwordConfirm)) {
-            errorList.add("Passwords dont match");
+            errorList.add(WStoreMessages.MESSAGES.passwordDontMatch());
         }
         if (errorList.isEmpty()) {
             return true;

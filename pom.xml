@@ -12,6 +12,7 @@
 		<jboss.bom.version>1.0.0.Final</jboss.bom.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<version.jboss.javaee.web>2.0.0.Final</version.jboss.javaee.web>
+		<version.org.jboss.bom>1.0.4.Final</version.org.jboss.bom>
 	</properties>
 
 	<dependencyManagement>
@@ -37,6 +38,13 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.jboss.bom</groupId>
+				<artifactId>jboss-javaee-6.0-with-logging</artifactId>
+				<version>${version.org.jboss.bom}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 
 			<dependency>
 				<groupId>commons-lang</groupId>
@@ -48,7 +56,7 @@
 				<artifactId>commons-collections</artifactId>
 				<version>3.2.1</version>
 			</dependency>
-			
+
 		</dependencies>
 	</dependencyManagement>
 

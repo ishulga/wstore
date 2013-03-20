@@ -4,7 +4,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Web-store</title>
+<title>#{bundle.wstore}</title>
 </head>
 
 <body>
@@ -12,13 +12,13 @@
     <div id="container">
         <h:messages styleClass="messages" layout="table" />
         <h:form id="userForm">
-            <h:outputLabel>Login:</h:outputLabel>
+            <h:outputLabel>#{bundle.login}</h:outputLabel>
             <h:inputText id = "username" value="#{authBean.login}" />
             <br />
-            <h:outputLabel>Password:</h:outputLabel>
+            <h:outputLabel>#{bundle.password}</h:outputLabel>
             <h:inputSecret value="#{authBean.password}" />
             <br />
-            <h:outputLabel>Password confirm:</h:outputLabel>
+            <h:outputLabel>#{bundle.confirmPassword}</h:outputLabel>
             <h:inputSecret value="#{authBean.passwordConfirm}" />
             <br />
             <h:commandButton id="Register" value="Register" action="#{authBean.register}"/>
