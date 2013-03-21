@@ -37,6 +37,15 @@ public class User implements Serializable, HasId {
     @Transient
     private Credentials credentials;
 
+    public User(String userLogin, String usrName) {
+        this.login = userLogin;
+        this.name = usrName;
+    }
+
+    public User() {
+
+    }
+
     public Credentials getCredentials() {
         return credentials;
     }

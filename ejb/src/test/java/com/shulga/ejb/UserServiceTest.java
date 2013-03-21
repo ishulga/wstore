@@ -24,7 +24,6 @@ import com.shulga.model.Entry;
 import com.shulga.model.Item;
 import com.shulga.model.User;
 
-
 @RunWith(Arquillian.class)
 public class UserServiceTest {
 

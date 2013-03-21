@@ -1,4 +1,4 @@
-package com.shulga.services.rest;
+package com.shulga.services.rs;
 
 import java.util.List;
 
