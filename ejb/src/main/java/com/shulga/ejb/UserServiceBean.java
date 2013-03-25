@@ -1,6 +1,6 @@
 package com.shulga.ejb;
 
-import java.util.List;
+import java.util.Collection;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -8,40 +8,46 @@ import javax.inject.Inject;
 import com.shulga.common.ServiceValidationException;
 import com.shulga.ejb.interfaces.UserServiceRemote;
 import com.shulga.model.User;
-import com.shulga.persistance.UserPL;
+import com.shulga.persistance.annotations.CachePersistence;
+import com.shulga.persistance.interfaces.UserPL;
 
 @Stateless
 public class UserServiceBean implements UserServiceRemote {
-	@Inject
-	private UserPL userPL;
+    // TODO make it work with interface, using cdi
+    @Inject
+    @CachePersistence
+    private UserPL userPL;
 
-	@Override
-	public Long create(User user) throws ServiceValidationException {
-		return userPL.create(user);
-	}
+    @Override
+    public Long create(User user) throws ServiceValidationException {
+        return userPL.create(user);
+    }
 
-	@Override
-	public void update(User user) {
-		userPL.update(user);
-	}
+    @Override
+    public void update(User user) {
+        userPL.update(user);
+    }
 
-	@Override
-	public void delete(Long id) {
-		userPL.delete(id);
-	}
+    @Override
+    public void delete(Long id) {
+        // TODO use a common style for all war clients
+        userPL.delete(id.toString());
+    }
 
-	@Override
-	public User get(Long id) {
-		return userPL.get(id);
-	}
+    @Override
+    public User get(Long id) {
+        // TODO use a common style for all war clients
+        return userPL.get(id.toString());
+    }
 
-	@Override
-	public List<User> getList(User qbe) {
-		return userPL.get(qbe);
-	}
-	@Override
-	public User getByLogin(String login) {
-	    return userPL.getByLogin(login);
-	}
+    @Override
+    public Collection<User> getAll() {
+        return userPL.getAll();
+    }
+
+    @Override
+    public User getByLogin(String login) {
+        return userPL.getByLogin(login);
+    }
 
 }

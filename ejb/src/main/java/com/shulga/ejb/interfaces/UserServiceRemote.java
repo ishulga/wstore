@@ -1,5 +1,6 @@
 package com.shulga.ejb.interfaces;
 
+import java.util.Collection;
 import java.util.List;
 
 import javax.ejb.Local;
@@ -18,7 +19,7 @@ public interface UserServiceRemote {
 
     User get(Long id);
 
-	List<User> getList(User qbe);
+	Collection<User> getAll();
 
     User getByLogin(String login);
 }

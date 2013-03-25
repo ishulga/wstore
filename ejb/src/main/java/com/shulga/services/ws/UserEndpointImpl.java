@@ -1,5 +1,6 @@
 package com.shulga.services.ws;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -17,7 +18,7 @@ public class UserEndpointImpl implements UserEndpoint {
 
     @Override
     public String getUserNames() {
-        List<User> list = userService.getList(new User());
+        List<User> list = new ArrayList<User>(userService.getAll());
         StringBuffer sb = new StringBuffer();
         for (User user : list) {
             sb.append(user.getName() + ",");

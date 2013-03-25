@@ -1,5 +1,6 @@
 package com.shulga.services.rs;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -22,7 +23,7 @@ public class UserService {
     @GET
     @Produces("text/xml")
     public List<User> allUsers() throws ServiceValidationException {
-        return userService.getList(new User());
+        return new ArrayList<User>(userService.getAll());
     }
     
     @GET

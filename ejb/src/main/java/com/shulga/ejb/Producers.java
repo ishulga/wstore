@@ -4,15 +4,30 @@ import java.util.logging.Logger;
 
 import javax.enterprise.inject.Produces;
 import javax.enterprise.inject.spi.InjectionPoint;
+import javax.inject.Inject;
+
+import org.infinispan.manager.DefaultCacheManager;
 
 import com.shulga.annotation.WstLogger;
+import com.shulga.persistance.infinispan.CacheManagerProvider;
 
 public class Producers {
 
-	@Produces
-	@WstLogger
-	Logger getLogger(InjectionPoint ip) {
-		String category = ip.getMember().getDeclaringClass().getName();
-		return Logger.getLogger(category);
-	}
+    @Inject
+    CacheManagerProvider cacheProvider;
+    
+
+    @Produces
+    @WstLogger
+    Logger getLogger(InjectionPoint ip) {
+        String category = ip.getMember().getDeclaringClass().getName();
+        return Logger.getLogger(category);
+    }
+
+    @Produces
+    public DefaultCacheManager getCacheManager() {
+        return cacheProvider.getCacheManager();
+    }
+    
+
 }

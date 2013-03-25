@@ -1,4 +1,4 @@
-package com.shulga.persistance;
+package com.shulga.persistance.hibernate;
 
 import com.shulga.model.Comment;
 

@@ -1,7 +1,5 @@
 package com.shulga.ejb;
 
-import java.util.List;
-
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
@@ -10,21 +8,27 @@ import com.shulga.common.ServiceValidationException;
 import com.shulga.ejb.interfaces.AuthenticationServiceRemote;
 import com.shulga.model.Credentials;
 import com.shulga.model.User;
-import com.shulga.persistance.UserPL;
+import com.shulga.persistance.annotations.CachePersistence;
+import com.shulga.persistance.interfaces.UserPL;
 
 @Stateless
 public class AuthenticationServiceBean implements AuthenticationServiceRemote {
     @Inject
+    @CachePersistence
     private UserPL userPL;
 
     @Override
     public boolean login(Credentials creds) throws ServiceValidationException {
         User user = new User();
         user.setLogin(creds.getLogin());
+        user.setKey(creds.getLogin());
         user.setPassword(creds.getPassword());
-        List<User> users = userPL.get(user);
-        if(users.size()!=1){
+        User dbUser = userPL.getByLogin(creds.getLogin());
+        if(dbUser==null){
             throw new ServiceValidationException("User does not exist");
+        }
+        if(!dbUser.getPassword().equals(user.getPassword())){
+            throw new ServiceValidationException("Wrong credentials");
         }
         return true;
     }
@@ -47,6 +51,7 @@ public class AuthenticationServiceBean implements AuthenticationServiceRemote {
         }
         User user = new User();
         user.setLogin(creds.getLogin());
+        user.setKey(creds.getLogin());
         user.setPassword(creds.getPassword());
         userPL.create(user);
         return true;

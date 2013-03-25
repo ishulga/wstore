@@ -1,4 +1,4 @@
-package com.shulga.persistance;
+package com.shulga.persistance.hibernate;
 
 import java.io.Serializable;
 import java.util.List;
@@ -28,17 +28,18 @@ public class GenericPL<T extends Serializable & HasId> {
 		return obj.getId();
 	}
 	
-	public void delete(Long id){
-		em.remove(em.getReference(type, id));
+	public void delete(String id){
+	    //TODO check if converting type is necessary
+		em.remove(em.getReference(type, Long.valueOf(id)));
 		em.flush();
 	}
 	
-	public void update(Object obj){
+	public void update(T obj){
 		em.merge(obj);
 	}
 	
-	public T get(Long id){
-		return em.find(type, id);
+	public T get(String id){
+		return em.find(type, Long.valueOf(id));
 	}
 	
 	@SuppressWarnings("unchecked")

@@ -17,11 +17,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 @SuppressWarnings("restriction")
 @XmlRootElement
 @Entity
-public class User implements Serializable, HasId {
+public class User implements Serializable, HasId, Cachable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
     private Long id;
+    @Transient
+    private String key;
     private String name;
     private String lastname;
     private String login;
@@ -44,6 +46,14 @@ public class User implements Serializable, HasId {
 
     public User() {
 
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public Credentials getCredentials() {
