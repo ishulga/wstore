@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @SuppressWarnings("restriction")
 @XmlRootElement
 @Entity
-public class User implements Serializable, HasId, Cachable {
+public class User implements Serializable, HasId, Cachable  {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
@@ -25,8 +25,8 @@ public class User implements Serializable, HasId, Cachable {
     @Transient
     private String key;
     private String name;
-    private String lastname;
     private String login;
+    private String lastname;
     private String password;
     private String description;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
