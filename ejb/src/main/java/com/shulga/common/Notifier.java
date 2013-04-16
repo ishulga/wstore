@@ -22,9 +22,9 @@ public class Notifier {
 	private ConnectionFactory factory;
 	@Resource(mappedName="shulga/jms/queue/demo_queue")
 	private Destination dest;
-	@Inject
-	@WstLogger
-	private Logger logger;
+//	@Inject
+//	@WstLogger
+//	private Logger logger;
 	private Connection connection;
 
 	
@@ -38,7 +38,7 @@ public class Notifier {
 			Message message = session.createTextMessage();
 			message.setStringProperty("name", text);
 			producer.send(dest, message);
-			logger.info( "JMS message sent");
+//			logger.info( "JMS message sent");
 			producer.close();
 		} catch (JMSException e) {
 			e.printStackTrace();
@@ -47,7 +47,7 @@ public class Notifier {
 				try {
 					connection.close();
 				} catch (JMSException e) {
-					logger.info( "Could not close connection");
+//					logger.info( "Could not close connection");
 				}
 		}
 	}

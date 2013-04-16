@@ -9,6 +9,7 @@ import com.shulga.common.ServiceValidationException;
 import com.shulga.ejb.interfaces.UserServiceRemote;
 import com.shulga.model.User;
 import com.shulga.persistance.annotations.CachePersistence;
+import com.shulga.persistance.annotations.DatabasePersistence;
 import com.shulga.persistance.interfaces.UserPL;
 
 @Stateless
@@ -39,15 +40,20 @@ public class UserServiceBean implements UserServiceRemote {
         // TODO use a common style for all war clients
         return userPL.get(id.toString());
     }
-
+    
     @Override
-    public Collection<User> getAll() {
-        return userPL.getAll();
+    public Collection<User> getAll(User user) {
+        return userPL.getAll(user);
     }
 
     @Override
     public User getByLogin(String login) {
         return userPL.getByLogin(login);
     }
+
+	@Override
+	public Collection<User> getAll() {
+		return userPL.getAll();
+	}
 
 }

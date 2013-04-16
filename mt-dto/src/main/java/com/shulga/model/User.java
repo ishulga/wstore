@@ -14,8 +14,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.search.annotations.Indexed;
+
 @SuppressWarnings("restriction")
 @XmlRootElement
+@Indexed
 @Entity
 public class User implements Serializable, HasId, Cachable  {
     private static final long serialVersionUID = 1L;
@@ -118,6 +121,7 @@ public class User implements Serializable, HasId, Cachable  {
 
     public void setLogin(String login) {
         this.login = login;
+        this.key = login;
     }
 
     public String getPassword() {

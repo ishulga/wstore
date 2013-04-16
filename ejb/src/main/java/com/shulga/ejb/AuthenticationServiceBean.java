@@ -9,6 +9,7 @@ import com.shulga.ejb.interfaces.AuthenticationServiceRemote;
 import com.shulga.model.Credentials;
 import com.shulga.model.User;
 import com.shulga.persistance.annotations.CachePersistence;
+import com.shulga.persistance.annotations.DatabasePersistence;
 import com.shulga.persistance.interfaces.UserPL;
 
 @Stateless

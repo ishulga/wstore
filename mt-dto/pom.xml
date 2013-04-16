@@ -23,6 +23,10 @@
 			<version>1.1.1.Final</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search-infinispan</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>

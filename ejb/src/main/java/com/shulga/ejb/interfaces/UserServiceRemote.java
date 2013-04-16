@@ -19,6 +19,8 @@ public interface UserServiceRemote {
 
     User get(Long id);
 
+	Collection<User> getAll(User user);
+
 	Collection<User> getAll();
 
     User getByLogin(String login);

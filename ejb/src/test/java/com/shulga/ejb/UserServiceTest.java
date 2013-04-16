@@ -19,6 +19,7 @@ import org.junit.runner.RunWith;
 
 import com.shulga.common.ServiceValidationException;
 import com.shulga.ejb.interfaces.UserServiceRemote;
+import com.shulga.ejb.util.Deployments;
 import com.shulga.model.Comment;
 import com.shulga.model.Entry;
 import com.shulga.model.Item;
@@ -30,10 +31,7 @@ public class UserServiceTest {
 
 	@Deployment
     public static Archive<?> createTestArchive() {
-    	return ShrinkWrap.create(WebArchive.class, "test.war").addPackages(true, "com.shulga")
-                .addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
-                .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
-                .addAsWebInfResource("test-ds.xml", "test-ds.xml");
+    	return Deployments.baseDeployment();
     }
 
 	@Inject
@@ -43,6 +41,7 @@ public class UserServiceTest {
 	public void createUpdate() throws ServiceValidationException {
 		User user = new User();
 		user.setName("Jack");
+		user.setLogin("Jack");
 		Long id = userService.create(user);
 		user = userService.get(id);
 		assertEquals("Jack", user.getName());
@@ -58,13 +57,14 @@ public class UserServiceTest {
 	public void getByQBE() throws ServiceValidationException {
 		User user = new User();
 		user.setName("Jack");
-		user.setLastname("Welch");
+		user.setLogin("Jack");
+		user.setLastname("Black");
 		userService.create(user);
 		user = new User();
-		user.setName("Jack");
-		user = userService.getAll().iterator().next();
+		user.setLastname("Black");
+		user = userService.getAll(user).iterator().next();
 		assertEquals("Jack", user.getName());
-		assertEquals("Welch", user.getLastname());
+		assertEquals("Black", user.getLastname());
 	}
 	@Test
     public void getByLogin() throws ServiceValidationException {
@@ -80,6 +80,7 @@ public class UserServiceTest {
     public void userWithItems() throws ServiceValidationException {
         User user = new User();
         user.setName("Jack");
+        user.setLogin("Jack");
         user.setLastname("Welch");
         Item boughtItem = new Item();
         boughtItem.setTitle("boughtItem");

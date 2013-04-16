@@ -74,21 +74,30 @@
 			<scope>provided</scope>
 		</dependency>
 
-
 		<dependency>
 			<groupId>org.infinispan</groupId>
 			<artifactId>infinispan-core</artifactId>
 			<scope>provided</scope>
 		</dependency>
 
-
-		<!-- Infinispan dependency -->
 		<dependency>
 			<groupId>org.infinispan</groupId>
 			<artifactId>infinispan-cdi</artifactId>
 			<version>${infinispan.version}</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-search-infinispan</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.infinispan</groupId>
+			<artifactId>infinispan-query</artifactId>
+			<version>5.2.5.Final</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>com.shulga</groupId>

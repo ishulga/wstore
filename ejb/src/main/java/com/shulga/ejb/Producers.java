@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.infinispan.manager.DefaultCacheManager;
 
 import com.shulga.annotation.WstLogger;
+import com.shulga.persistance.annotations.DefaultCache;
 import com.shulga.persistance.infinispan.CacheManagerProvider;
 
 public class Producers {
@@ -25,7 +26,8 @@ public class Producers {
     }
 
     @Produces
-    public DefaultCacheManager getCacheManager() {
+    @DefaultCache
+    DefaultCacheManager getCacheManager() {
         return cacheProvider.getCacheManager();
     }
     

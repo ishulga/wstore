@@ -18,5 +18,7 @@ public interface UserPL {
 
     User getByLogin(String login);
     
+    Collection<User> getAll(User user);
+    
     Collection<User> getAll();
 }
