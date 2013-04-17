@@ -4,7 +4,6 @@ import javax.ejb.Local;
 
 import com.shulga.common.ServiceValidationException;
 import com.shulga.model.Credentials;
-import com.shulga.model.User;
 
 @Local
 public interface AuthenticationServiceRemote {

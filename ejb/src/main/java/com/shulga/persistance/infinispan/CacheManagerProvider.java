@@ -1,12 +1,8 @@
 package com.shulga.persistance.infinispan;
 
-import java.lang.annotation.ElementType;
-import java.util.Properties;
-
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.ApplicationScoped;
 
-import org.hibernate.search.cfg.SearchMapping;
 import org.infinispan.configuration.cache.CacheMode;
 import org.infinispan.configuration.cache.Configuration;
 import org.infinispan.configuration.cache.ConfigurationBuilder;
@@ -16,8 +12,6 @@ import org.infinispan.eviction.EvictionStrategy;
 import org.infinispan.manager.DefaultCacheManager;
 import org.infinispan.util.concurrent.IsolationLevel;
 
-import com.shulga.model.User;
-
 @ApplicationScoped
 public class CacheManagerProvider {
 	private DefaultCacheManager cacheManager;
@@ -25,14 +19,14 @@ public class CacheManagerProvider {
 	public DefaultCacheManager getCacheManager() {
 		if (cacheManager == null) {
 
-			SearchMapping mapping = new SearchMapping();
-			mapping.entity(User.class).indexed().providedId()
-					.property("name", ElementType.METHOD).field()
-					.property("lastname", ElementType.METHOD).field();
-
-			Properties properties = new Properties();
-			properties.put(org.hibernate.search.Environment.MODEL_MAPPING,
-					mapping);
+//			SearchMapping mapping = new SearchMapping();
+//			mapping.entity(User.class).indexed().providedId()
+//					.property("name", ElementType.METHOD).field()
+//					.property("lastname", ElementType.METHOD).field();
+//
+//			Properties properties = new Properties();
+//			properties.put(org.hibernate.search.Environment.MODEL_MAPPING,
+//					mapping);
 
 			GlobalConfiguration glob = new GlobalConfigurationBuilder()
 					.nonClusteredDefault().globalJmxStatistics().disable()
@@ -42,8 +36,10 @@ public class CacheManagerProvider {
 					.isolationLevel(IsolationLevel.REPEATABLE_READ).eviction()
 					.maxEntries(4).strategy(EvictionStrategy.LIRS).loaders()
 					.passivation(false).addFileCacheStore()
-					.purgeOnStartup(true).indexing().enable()
-					.indexLocalOnly(true).withProperties(properties).build(); // Builds
+					.purgeOnStartup(true).build();
+					
+//					indexing().enable()
+//					.indexLocalOnly(true).withProperties(properties).build(); // Builds
 																				// the
 																				// Configuration
 																				// object

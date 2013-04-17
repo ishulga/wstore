@@ -20,13 +20,11 @@ import org.hibernate.search.annotations.Indexed;
 @XmlRootElement
 @Indexed
 @Entity
-public class User implements Serializable, HasId, Cachable  {
+public class User implements Serializable, HasId {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
     private Long id;
-    @Transient
-    private String key;
     private String name;
     private String login;
     private String lastname;
@@ -49,14 +47,6 @@ public class User implements Serializable, HasId, Cachable  {
 
     public User() {
 
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
     }
 
     public Credentials getCredentials() {
@@ -121,7 +111,6 @@ public class User implements Serializable, HasId, Cachable  {
 
     public void setLogin(String login) {
         this.login = login;
-        this.key = login;
     }
 
     public String getPassword() {

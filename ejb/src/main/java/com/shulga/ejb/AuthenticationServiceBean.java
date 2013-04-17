@@ -8,21 +8,17 @@ import com.shulga.common.ServiceValidationException;
 import com.shulga.ejb.interfaces.AuthenticationServiceRemote;
 import com.shulga.model.Credentials;
 import com.shulga.model.User;
-import com.shulga.persistance.annotations.CachePersistence;
-import com.shulga.persistance.annotations.DatabasePersistence;
 import com.shulga.persistance.interfaces.UserPL;
 
 @Stateless
 public class AuthenticationServiceBean implements AuthenticationServiceRemote {
     @Inject
-    @CachePersistence
     private UserPL userPL;
 
     @Override
     public boolean login(Credentials creds) throws ServiceValidationException {
         User user = new User();
         user.setLogin(creds.getLogin());
-        user.setKey(creds.getLogin());
         user.setPassword(creds.getPassword());
         User dbUser = userPL.getByLogin(creds.getLogin());
         if(dbUser==null){
@@ -52,7 +48,6 @@ public class AuthenticationServiceBean implements AuthenticationServiceRemote {
         }
         User user = new User();
         user.setLogin(creds.getLogin());
-        user.setKey(creds.getLogin());
         user.setPassword(creds.getPassword());
         userPL.create(user);
         return true;

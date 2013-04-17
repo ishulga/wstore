@@ -5,13 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.commons.lang.StringUtils;
-import org.jboss.logging.Message;
-import org.jboss.logging.Messages;
 
 import com.shulga.common.ServiceValidationException;
 import com.shulga.ejb.interfaces.AuthenticationServiceRemote;

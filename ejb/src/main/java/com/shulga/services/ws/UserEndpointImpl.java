@@ -6,7 +6,6 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.jws.WebService;
 
-import com.shulga.ejb.UserServiceBean;
 import com.shulga.ejb.interfaces.UserServiceRemote;
 import com.shulga.model.User;
 

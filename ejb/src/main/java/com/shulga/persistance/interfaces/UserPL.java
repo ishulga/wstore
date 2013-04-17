@@ -1,7 +1,6 @@
 package com.shulga.persistance.interfaces;
 
 import java.util.Collection;
-import java.util.List;
 
 import com.shulga.common.ServiceValidationException;
 import com.shulga.model.User;

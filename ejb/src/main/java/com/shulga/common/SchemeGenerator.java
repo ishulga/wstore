@@ -1,24 +1,16 @@
 package com.shulga.common;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URL;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.Properties;
 
 import javax.persistence.spi.PersistenceUnitTransactionType;
 
-import org.hibernate.cfg.Configuration;
-import org.hibernate.dialect.Dialect;
 import org.hibernate.ejb.Ejb3Configuration;
 import org.hibernate.ejb.packaging.PersistenceMetadata;
 import org.hibernate.ejb.packaging.PersistenceXmlLoader;
-import org.hibernate.engine.jdbc.internal.FormatStyle;
-import org.hibernate.engine.jdbc.internal.Formatter;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
 
 public class SchemeGenerator {

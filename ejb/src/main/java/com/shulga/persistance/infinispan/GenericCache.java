@@ -8,12 +8,11 @@ import javax.inject.Inject;
 import org.infinispan.Cache;
 import org.infinispan.manager.DefaultCacheManager;
 
-import com.shulga.model.Cachable;
 import com.shulga.model.HasId;
 import com.shulga.persistance.annotations.DefaultCache;
 
 
-public class GenericCache<T extends Serializable & HasId & Cachable> {
+public class GenericCache<T extends Serializable & HasId> {
 
     @Inject
     @DefaultCache
@@ -41,7 +40,7 @@ public class GenericCache<T extends Serializable & HasId & Cachable> {
     }
 
     public void update(T obj) {
-        cache.put(obj.getKey(), obj);
+        cache.put(obj.getId().toString(), obj);
     }
 
     public T get(String id) {

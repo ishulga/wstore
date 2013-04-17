@@ -4,10 +4,8 @@ import java.util.Collection;
 import java.util.List;
 
 import com.shulga.model.User;
-import com.shulga.persistance.annotations.DatabasePersistence;
 import com.shulga.persistance.interfaces.UserPL;
 
-@DatabasePersistence
 public class UserDAO extends GenericPL<User> implements UserPL {
 
 	public UserDAO() {

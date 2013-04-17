@@ -1,9 +1,6 @@
 package com.shulga.common;
 
-import java.util.logging.Logger;
-
 import javax.annotation.Resource;
-import javax.inject.Inject;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
@@ -11,8 +8,6 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
-
-import com.shulga.annotation.WstLogger;
 
 
 

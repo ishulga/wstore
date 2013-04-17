@@ -2,17 +2,11 @@ package com.shulga.ejb;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Arrays;
-import java.util.HashSet;
-
 import javax.inject.Inject;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.Archive;
-import org.jboss.shrinkwrap.api.ShrinkWrap;
-import org.jboss.shrinkwrap.api.asset.EmptyAsset;
-import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +15,6 @@ import com.shulga.common.ServiceValidationException;
 import com.shulga.ejb.interfaces.UserServiceRemote;
 import com.shulga.ejb.util.Deployments;
 import com.shulga.model.Comment;
-import com.shulga.model.Entry;
 import com.shulga.model.Item;
 import com.shulga.model.User;
 

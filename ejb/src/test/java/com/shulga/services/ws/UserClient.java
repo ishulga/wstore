@@ -1,14 +1,11 @@
 package com.shulga.services.ws;
 
 
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
-
-import com.shulga.services.ws.UserEndpoint;
-
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
+
+import javax.xml.namespace.QName;
+import javax.xml.ws.Service;
 
 /**
  * A Client stub to the HelloWorld JAX-WS Web Service.

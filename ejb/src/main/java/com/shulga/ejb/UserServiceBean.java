@@ -8,15 +8,12 @@ import javax.inject.Inject;
 import com.shulga.common.ServiceValidationException;
 import com.shulga.ejb.interfaces.UserServiceRemote;
 import com.shulga.model.User;
-import com.shulga.persistance.annotations.CachePersistence;
-import com.shulga.persistance.annotations.DatabasePersistence;
 import com.shulga.persistance.interfaces.UserPL;
 
 @Stateless
 public class UserServiceBean implements UserServiceRemote {
     // TODO make it work with interface, using cdi
     @Inject
-    @CachePersistence
     private UserPL userPL;
 
     @Override

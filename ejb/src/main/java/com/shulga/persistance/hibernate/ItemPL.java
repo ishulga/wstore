@@ -1,6 +1,5 @@
 package com.shulga.persistance.hibernate;
 
-import com.shulga.model.Entry;
 import com.shulga.model.Item;
 
 public class ItemPL extends GenericPL<Item> {
