@@ -13,15 +13,15 @@
         <h:messages styleClass="messages" layout="table" />
         <h:form id="userForm">
             <h:outputLabel>#{bundle.login}</h:outputLabel>
-            <h:inputText id = "username" value="#{authBean.login}" />
+            <h:inputText id = "username" value="#{userBean.login}" />
             <br />
             <h:outputLabel>#{bundle.password}</h:outputLabel>
-            <h:inputSecret value="#{authBean.password}" />
+            <h:inputSecret value="#{userBean.password}" />
             <br />
             <h:outputLabel>#{bundle.confirmPassword}</h:outputLabel>
-            <h:inputSecret value="#{authBean.passwordConfirm}" />
+            <h:inputSecret value="#{userBean.passwordConfirm}" />
             <br />
-            <h:commandButton id="Register" value="Register" action="#{authBean.register}"/>
+            <h:commandButton id="Register" value="Register" action="#{userBean.register}"/>
              <h:link outcome="/login.xhtml" value="Login" />
 
         </h:form>

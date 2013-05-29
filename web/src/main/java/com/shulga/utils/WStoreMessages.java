@@ -22,5 +22,9 @@ public interface WStoreMessages {
 
     @Message("Password dont match")
     String passwordDontMatch();
+    
+    @Message("Empty one of fields")
+	String emptyItemField();
+
 
 }

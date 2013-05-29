@@ -12,6 +12,7 @@
 <body>
      <h:form id="productCreateForm">
             <h:outputLabel>#{bundle.title}</h:outputLabel>
+            <h:messages styleClass="messages" layout="table" />
             <h:inputText id = "title" value="#{itemBean.title}" />
             <br />
             <h:outputLabel>#{bundle.text}</h:outputLabel>
