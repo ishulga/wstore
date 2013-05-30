@@ -110,6 +110,7 @@
 			<artifactId>jboss-app-dto</artifactId>
 			<version>0.0.1</version>
 		</dependency>
+		
 
 		<dependency>
 			<groupId>org.hibernate.javax.persistence</groupId>

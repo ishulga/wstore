@@ -1,13 +1,16 @@
 package com.shulga.beans;
 
 import java.io.Serializable;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
 import javassist.expr.NewArray;
 
 import javax.annotation.security.RolesAllowed;
+import javax.ejb.SessionContext;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -73,6 +76,7 @@ public class UserBean implements Serializable {
 	}
 
 	public String register() {
+		FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
 		if (!validateRegistration()) {
 			return null;
 		}
