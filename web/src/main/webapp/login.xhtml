@@ -11,7 +11,7 @@
 
     <div id="container">
         <h:messages styleClass="messages" layout="table" />
-        <!-- h:form id="loginForm">
+        <h:form id="loginForm">
             <h:outputLabel>#{bundle.login}</h:outputLabel>
             <h:inputText id="username" value="#{userBean.login}" />
             <br />
@@ -20,9 +20,9 @@
             <br />
             <h:commandButton id="Login" value="Login" action="#{userBean.login}"/>
             <h:link outcome="/register.xhtml" value="Register" />
-        </h:form> -->
+        </h:form>
         
-        <form id="loginForm" action="j_security_check" method="post">
+        <!-- form id="loginForm" action="j_security_check" method="post">
 			<h:outputLabel for="j_username" value="Username" />
 			<h:inputText id="j_username"  />
 			<br />
@@ -31,7 +31,7 @@
 			<br />
 			<h:commandButton id="Login" value="Login" />
             <h:link outcome="/register.xhtml" value="Register" />
-		</form>
+		</form> -->
 
     </div>
 
